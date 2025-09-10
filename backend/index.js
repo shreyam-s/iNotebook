@@ -2,15 +2,16 @@ const connectToMongo = require("./db");
 const express = require("express");
 const cors = require("cors");
 
+// ✅ Connect to MongoDB Atlas
 connectToMongo();
 
 const app = express();
-const port = 4000;
+const port = process.env.PORT || 4000;
 
 // ✅ CORS configuration
 app.use(
   cors({
-    origin: "http://localhost:3000", // React app URL
+    origin: process.env.FRONTEND_URL || "http://localhost:3000",
     methods: ["GET", "POST", "PUT", "DELETE"],
     credentials: true,
   })

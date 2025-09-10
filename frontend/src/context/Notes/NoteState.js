@@ -2,7 +2,8 @@ import React, { useState } from "react";
 import NoteContext from "./noteContext";
 
 const NoteState = (props) => {
-  const host = "http://localhost:4000";
+  // Use environment variable for backend URL
+  const host = process.env.REACT_APP_API_URL; // e.g., https://inotebook-backend.onrender.com
   const [notes, setNotes] = useState([]);
 
   // 🔹 Get All Notes
@@ -34,11 +35,14 @@ const NoteState = (props) => {
   // 🔹 Add Note
   const addNote = async (title, description, tag) => {
     try {
+      const token = localStorage.getItem("token");
+      if (!token) return;
+
       const response = await fetch(`${host}/api/notes/addnote`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          "auth-token": localStorage.getItem("token"),
+          "auth-token": token,
         },
         body: JSON.stringify({ title, description, tag }),
       });
@@ -58,11 +62,14 @@ const NoteState = (props) => {
   // 🔹 Delete Note
   const deleteNote = async (id) => {
     try {
+      const token = localStorage.getItem("token");
+      if (!token) return;
+
       const response = await fetch(`${host}/api/notes/deletenote/${id}`, {
         method: "DELETE",
         headers: {
           "Content-Type": "application/json",
-          "auth-token": localStorage.getItem("token"),
+          "auth-token": token,
         },
       });
 
@@ -80,11 +87,14 @@ const NoteState = (props) => {
   // 🔹 Edit Note
   const editNote = async (id, title, description, tag) => {
     try {
+      const token = localStorage.getItem("token");
+      if (!token) return;
+
       const response = await fetch(`${host}/api/notes/updatenote/${id}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
-          "auth-token": localStorage.getItem("token"),
+          "auth-token": token,
         },
         body: JSON.stringify({ title, description, tag }),
       });
