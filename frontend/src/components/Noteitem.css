@@ -1,0 +1,18 @@
+/* Noteitem hover effect */
+.hover-effect {
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.hover-effect:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+}
+
+/* Optional: card title and text styling */
+.card-title {
+  font-weight: 600;
+}
+
+.card-text {
+  color: #6c757d; /* muted text */
+}
