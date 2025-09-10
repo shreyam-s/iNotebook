@@ -1,5 +1,5 @@
-const mongoose = require("mongoose");
 require("dotenv").config(); // Load environment variables
+const mongoose = require("mongoose");
 
 const mongoURI = process.env.MONGO_URI; // Atlas URI from .env or Render
 
