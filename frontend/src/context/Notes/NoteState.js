@@ -3,7 +3,7 @@ import NoteContext from "./noteContext";
 
 const NoteState = (props) => {
   // Use environment variable for backend URL
-  const host = process.env.REACT_APP_API_URL; // e.g., https://inotebook-backend.onrender.com
+  const host = process.env.REACT_APP_API_URL;
   const [notes, setNotes] = useState([]);
 
   // 🔹 Get All Notes
